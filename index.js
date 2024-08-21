@@ -33,5 +33,5 @@ app.get('/api/photos', async (req, res) => {
 
 // Start the backend server on the defined port
 app.listen(port, () => {
-    console.log(`Backend server is running on http://localhost:${port}`);
+    console.log(`Backend server is running on port ${port}`);
 });
