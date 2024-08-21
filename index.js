@@ -1,5 +1,6 @@
 const express = require('express');
 const dotenv = require('dotenv');
+const cors = require('cors'); // Cross-Origin Resource Sharing: Needed for my backend to successfully communicate with my front end
 const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args)); // Dynamic import for node-fetch
 
 // Load environment variables from .env file
@@ -8,12 +9,8 @@ dotenv.config();
 const app = express(); // Initialize Express app
 const port = 3000; // Define the port
 
-// Allow CORS for frontend communication
-app.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "*"); // Allow requests from any origin
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept"); // Allow these headers
-    next(); // Proceed to the next middleware
-});
+// Apply CORS to allow cross-origin requests from backend
+app.use(cors());
 
 // Endpoint to fetch Unsplash images
 app.get('/api/photos', async (req, res) => {
