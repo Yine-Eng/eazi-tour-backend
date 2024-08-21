@@ -1,7 +1,6 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const cors = require('cors'); // Cross-Origin Resource Sharing: Needed for my backend to successfully communicate with my front end
-const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args)); // Dynamic import for node-fetch
 
 // Load environment variables from .env file
 dotenv.config();
