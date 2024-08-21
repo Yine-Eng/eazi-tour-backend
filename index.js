@@ -7,10 +7,14 @@ const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fet
 dotenv.config();
 
 const app = express(); // Initialize Express app
-const port = 3000; // Define the port
+const port = process.env.PORT || 3000; // Dynamic port from environment variables
 
-// Apply CORS to allow cross-origin requests from backend
-app.use(cors());
+// Apply CORS and allow requests from frontend's domain
+app.use(cors({
+    origin: 'https://eazi-tour.vercel.app', // Allows only domain of my frontend
+    methods: ['GET', 'POST'], // Allowed methods
+    allowedHeaders: ['Content-Type'] // ALlowed headers
+}));
 
 // Endpoint to fetch Unsplash images
 app.get('/api/photos', async (req, res) => {
