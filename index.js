@@ -11,7 +11,9 @@ const port = process.env.PORT || 3000; // Dynamic port from environment variable
 
 // Apply CORS and allow requests from frontend's domain
 app.use(cors({
-    origin: ['http://127.0.0.1:5500', 'https://eazi-tour.vercel.app/'], // both Local and production URLs are allowed
+    origin: ['http://127.0.0.1:5500', 'https://eazi-tour.vercel.app'], // both Local and production URLs are allowed
+    methods: ['GET'], // allowed methods
+    allowedHeaders: ['Content-Type'] //allowed headers
 }));
 
 // Endpoint to fetch Unsplash images
