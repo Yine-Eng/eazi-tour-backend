@@ -16,6 +16,11 @@ app.use(cors({
     allowedHeaders: ['Content-Type'] //allowed headers
 }));
 
+// Basic route for the root URL
+app.get('/', (req, res) => {
+    res.send('Backend is working!');
+});
+
 // Endpoint to fetch Unsplash images
 app.get('/api/photos', async (req, res) => {
     const { query } = req.query; // Get the query parameter from the request
